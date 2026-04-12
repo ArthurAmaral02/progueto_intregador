@@ -10,4 +10,10 @@ abaixo esta a prints do relatrio html do
 
 pytest --cov=ecommerce --cov-report=html test_ecommerce.py
 
-![Tela do sistema](logs_gui/foto1.jpeg)
+![Tela html do pytest --cov=ecommerce --cov-report=html test_ecommerce.py](logs_gui/foto1.jpeg)
+
+![Tela html do pytest --cov=ecommerce --cov-report=html test_ecommerce.py](logs_gui/foto2.jpeg)
+
+![Tela html do pytest --cov=ecommerce --cov-report=html test_ecommerce.py](logs_gui/foto3.jpeg)
+
+![Tela html do pytest --cov=ecommerce --cov-report=html test_ecommerce.py](logs_gui/foto4.jpeg)

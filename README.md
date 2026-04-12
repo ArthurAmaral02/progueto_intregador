@@ -10,4 +10,4 @@ abaixo esta a prints do relatrio html do
 
 pytest --cov=ecommerce --cov-report=html test_ecommerce.py
 
-![Tela do sistema](/home/art/Desktop/progueto_intregador/logs_gui//foto1.jpeg)
+![Tela do sistema](logs_gui/foto1.jpeg)

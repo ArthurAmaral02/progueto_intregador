@@ -5,9 +5,9 @@ def conectar():
         conexao = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",  # coloque a senha do root se tiver
-            database="ecommerce",  # nome do seu banco
-            unix_socket="/opt/lampp/var/mysql/mysql.sock"
+            password="",
+            database="ecommerce",
+            port=3306
         )
         print("✅ Conectado ao MySQL com sucesso!")
         return conexao
@@ -15,6 +15,5 @@ def conectar():
         print(f"[ERRO] Falha na conexão: {err}")
         return None
 
-# --- Teste rápido de conexão ---
 if __name__ == "__main__":
     conectar()

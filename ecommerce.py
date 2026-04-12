@@ -17,19 +17,18 @@ CURRENT_USER = ''
 CURRENT_PASSWORD = ''
 
 def get_db_connection(use_db=True):
-    """Cria e retorna uma conexão com o banco de dados (via XAMPP)."""
-    if not CURRENT_USER or not CURRENT_PASSWORD:
+    """Cria e retorna uma conexão com o banco de dados."""
+    if not CURRENT_USER:
         return None
         
     config = {
-        'host': 'localhost',
+        'host': '127.0.0.1',
         'user': CURRENT_USER,
-        'password': CURRENT_PASSWORD,
-        'unix_socket': '/opt/lampp/var/mysql/mysql.sock'  # <- ESSA LINHA É O SEGREDO!
+        'password': CURRENT_PASSWORD
     }
     
     if use_db:
-        config['database'] = DB_DATABASE  # ex: ecommerce
+        config['database'] = DB_DATABASE
     
     try:
         conn = mysql.connector.connect(**config)

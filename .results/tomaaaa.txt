@@ -1,0 +1,94 @@
+◄ 0s ◎ pytest test_ecommerce.py -v                                                                                      □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.3 50% ↓ 23:41
+============================================================================= test session starts =============================================================================
+platform linux -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0 -- /home/art/Desktop/progueto_intregador/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/art/Desktop/progueto_intregador
+plugins: cov-7.1.0
+collected 64 items                                                                                                                                                            
+
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_sem_credenciais PASSED                                                                                        [  1%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_apenas_usuario PASSED                                                                                         [  3%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_apenas_senha PASSED                                                                                           [  4%]
+test_ecommerce.py::TestGetDbConnection::test_conecta_com_credenciais_validas PASSED                                                                                     [  6%]
+test_ecommerce.py::TestGetDbConnection::test_conecta_sem_banco_quando_use_db_false PASSED                                                                               [  7%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_em_erro_de_conexao PASSED                                                                                     [  9%]
+test_ecommerce.py::TestGetUserRole::test_admin_exato PASSED                                                                                                             [ 10%]
+test_ecommerce.py::TestGetUserRole::test_admin_maiusculo PASSED                                                                                                         [ 12%]
+test_ecommerce.py::TestGetUserRole::test_gerente_em_nome_composto PASSED                                                                                                [ 14%]
+test_ecommerce.py::TestGetUserRole::test_funcionario_em_nome PASSED                                                                                                     [ 15%]
+test_ecommerce.py::TestGetUserRole::test_vendedor_em_nome PASSED                                                                                                        [ 17%]
+test_ecommerce.py::TestGetUserRole::test_usuario_desconhecido_e_guest PASSED                                                                                            [ 18%]
+test_ecommerce.py::TestGetUserRole::test_string_vazia_e_guest PASSED                                                                                                    [ 20%]
+test_ecommerce.py::TestCheckPermission::test_admin_passa_em_qualquer_role PASSED                                                                                        [ 21%]
+test_ecommerce.py::TestCheckPermission::test_gerente_passa_em_role_gerente PASSED                                                                                       [ 23%]
+test_ecommerce.py::TestCheckPermission::test_funcionario_bloqueado_de_role_gerente PASSED                                                                               [ 25%]
+test_ecommerce.py::TestCheckPermission::test_guest_bloqueado_de_tudo PASSED                                                                                             [ 26%]
+test_ecommerce.py::TestCheckPermission::test_multiplas_roles_permitidas PASSED                                                                                          [ 28%]
+test_ecommerce.py::TestExecuteQuery::test_executa_insert_sem_fetch PASSED                                                                                               [ 29%]
+test_ecommerce.py::TestExecuteQuery::test_executa_select_com_fetch PASSED                                                                                               [ 31%]
+test_ecommerce.py::TestExecuteQuery::test_retorna_none_em_erro_sql PASSED                                                                                               [ 32%]
+test_ecommerce.py::TestExecuteQuery::test_faz_rollback_em_erro PASSED                                                                                                   [ 34%]
+test_ecommerce.py::TestExecuteQuery::test_query_sem_params PASSED                                                                                                       [ 35%]
+test_ecommerce.py::TestExecuteQuery::test_fetch_retorna_lista_vazia_se_nenhum_resultado PASSED                                                                          [ 37%]
+test_ecommerce.py::TestCadastrarProduto::test_sem_permissao_nao_cadastra PASSED                                                                                         [ 39%]
+test_ecommerce.py::TestCadastrarProduto::test_funcionario_cadastra_com_sucesso PASSED                                                                                   [ 40%]
+test_ecommerce.py::TestCadastrarProduto::test_valor_invalido_cancela_cadastro PASSED                                                                                    [ 42%]
+test_ecommerce.py::TestCadastrarProduto::test_falha_no_banco_exibe_erro PASSED                                                                                          [ 43%]
+test_ecommerce.py::TestCadastrarProduto::test_produto_com_valores_limite PASSED                                                                                         [ 45%]
+test_ecommerce.py::TestCadastrarCliente::test_funcionario_nao_pode_cadastrar_cliente PASSED                                                                             [ 46%]
+test_ecommerce.py::TestCadastrarCliente::test_admin_cadastra_cliente_sucesso PASSED                                                                                     [ 48%]
+test_ecommerce.py::TestCadastrarCliente::test_data_invalida_cancela_cadastro PASSED                                                                                     [ 50%]
+test_ecommerce.py::TestCadastrarCliente::test_calcula_idade_corretamente PASSED                                                                                         [ 51%]
+test_ecommerce.py::TestRealizarVenda::test_guest_bloqueado PASSED                                                                                                       [ 53%]
+test_ecommerce.py::TestRealizarVenda::test_quantidade_invalida_cancela_venda PASSED                                                                                     [ 54%]
+test_ecommerce.py::TestRealizarVenda::test_produto_inexistente_cancela_venda PASSED                                                                                     [ 56%]
+test_ecommerce.py::TestRealizarVenda::test_estoque_insuficiente_bloqueia_venda PASSED                                                                                   [ 57%]
+test_ecommerce.py::TestRealizarVenda::test_venda_bem_sucedida PASSED                                                                                                    [ 59%]
+test_ecommerce.py::TestRealizarVenda::test_venda_com_transportadora PASSED                                                                                              [ 60%]
+test_ecommerce.py::TestConsultarVendas::test_guest_bloqueado PASSED                                                                                                     [ 62%]
+test_ecommerce.py::TestConsultarVendas::test_nenhuma_venda_exibe_aviso PASSED                                                                                           [ 64%]
+test_ecommerce.py::TestConsultarVendas::test_exibe_vendas_encontradas PASSED                                                                                            [ 65%]
+test_ecommerce.py::TestConsultarVendas::test_nome_produto_longo_truncado PASSED                                                                                         [ 67%]
+test_ecommerce.py::TestApagarRegistro::test_funcionario_nao_pode_apagar PASSED                                                                                          [ 68%]
+test_ecommerce.py::TestApagarRegistro::test_opcao_invalida PASSED                                                                                                       [ 70%]
+test_ecommerce.py::TestApagarRegistro::test_id_nao_numerico_cancela PASSED                                                                                              [ 71%]
+test_ecommerce.py::TestApagarRegistro::test_registro_inexistente PASSED                                                                                                 [ 73%]
+test_ecommerce.py::TestApagarRegistro::test_cancelamento_por_usuario PASSED                                                                                             [ 75%]
+test_ecommerce.py::TestApagarRegistro::test_apagar_cliente_sucesso PASSED                                                                                               [ 76%]
+test_ecommerce.py::TestExecutarReajuste::test_gerente_nao_pode_reajustar PASSED                                                                                         [ 78%]
+test_ecommerce.py::TestExecutarReajuste::test_percentual_invalido PASSED                                                                                                [ 79%]
+test_ecommerce.py::TestExecutarReajuste::test_categoria_invalida PASSED                                                                                                 [ 81%]
+test_ecommerce.py::TestExecutarReajuste::test_reajuste_sucesso PASSED                                                                                                   [ 82%]
+test_ecommerce.py::TestExecutarReajuste::test_reajuste_zero_percentual PASSED                                                                                           [ 84%]
+test_ecommerce.py::TestExecutarSorteio::test_gerente_nao_pode_sortear PASSED                                                                                            [ 85%]
+test_ecommerce.py::TestExecutarSorteio::test_sorteio_exibe_resultado PASSED                                                                                             [ 87%]
+test_ecommerce.py::TestExecutarSorteio::test_sorteio_sem_resultado_exibe_erro PASSED                                                                                    [ 89%]
+test_ecommerce.py::TestEdgeCases::test_usuario_com_admin_em_nome_nao_e_administrador PASSED                                                                             [ 90%]
+test_ecommerce.py::TestEdgeCases::test_usuario_gerente_funcionario_prioridade PASSED                                                                                    [ 92%]
+test_ecommerce.py::TestEdgeCases::test_check_permission_lista_vazia PASSED                                                                                              [ 93%]
+test_ecommerce.py::TestEdgeCases::test_check_permission_lista_vazia_admin_passa PASSED                                                                                  [ 95%]
+test_ecommerce.py::TestEdgeCases::test_venda_quantidade_zero PASSED                                                                                                     [ 96%]
+test_ecommerce.py::TestEdgeCases::test_data_futura_invalida_no_strptime PASSED                                                                                          [ 98%]
+test_ecommerce.py::TestEdgeCases::test_execute_query_conn_desconectada PASSED                                                                                           [100%]
+
+============================================================================= 64 passed in 0.42s ==============================================================================
+                                                                                                                                                                        ▴3▿1084
+◄ 0s ◎ pytest --cov=ecommerce test_ecommerce.py                                                                         □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.3 50% ↓ 23:41
+============================================================================= test session starts =============================================================================
+platform linux -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/art/Desktop/progueto_intregador
+plugins: cov-7.1.0
+collected 64 items                                                                                                                                                            
+
+test_ecommerce.py ................................................................                                                                                      [100%]
+
+=============================================================================== tests coverage ================================================================================
+_______________________________________________________________ coverage: platform linux, python 3.14.3-final-0 _______________________________________________________________
+
+Name           Stmts   Miss  Cover
+----------------------------------
+ecommerce.py     707    486    31%
+----------------------------------
+TOTAL            707    486    31%
+============================================================================= 64 passed in 0.56s ==============================================================================
+              

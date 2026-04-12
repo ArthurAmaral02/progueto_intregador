@@ -1,6 +1,6 @@
 # Ecommerce
 
-Este projeto consiste em um sistema de e-commerce desenvolvido em Python como parte da disciplina de Banco de Dados. Atualmente, ele também está sendo utilizado na disciplina de Testes e Qualidade de Software da Universidade Católica de Pernambuco.
+Este projeto consiste em um sistema de e-commerce desenvolvido em Python como parte da disciplina de Banco de Dados. Atualmente, ele também está sendo utilizado na disciplina de Testes e Qualidade de Software da Universidade Católica de Pernambuco(UNICAP).
 
 ## Equipe
 

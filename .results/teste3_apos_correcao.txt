@@ -1,0 +1,150 @@
+                                                                                        ▿689
+◄ 0s ◎ pytest -v                     □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.4 27% ↓ 20:41
+=================================== test session starts ====================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0 -- /home/art/Desktop/projeto_de_ivna/progueto_intregador/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/art/Desktop/projeto_de_ivna/progueto_intregador
+collected 105 items                                                                        
+
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_sem_credenciais PASSED     [  0%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_apenas_usuario PASSED      [  1%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_apenas_senha PASSED        [  2%]
+test_ecommerce.py::TestGetDbConnection::test_conecta_com_credenciais_validas PASSED  [  3%]
+test_ecommerce.py::TestGetDbConnection::test_conecta_sem_banco_quando_use_db_false PASSED [  4%]
+test_ecommerce.py::TestGetDbConnection::test_retorna_none_em_erro_de_conexao PASSED  [  5%]
+test_ecommerce.py::TestGetUserRole::test_admin_exato PASSED                          [  6%]
+test_ecommerce.py::TestGetUserRole::test_admin_maiusculo PASSED                      [  7%]
+test_ecommerce.py::TestGetUserRole::test_gerente_em_nome_composto PASSED             [  8%]
+test_ecommerce.py::TestGetUserRole::test_funcionario_em_nome PASSED                  [  9%]
+test_ecommerce.py::TestGetUserRole::test_vendedor_em_nome PASSED                     [ 10%]
+test_ecommerce.py::TestGetUserRole::test_usuario_desconhecido_e_guest PASSED         [ 11%]
+test_ecommerce.py::TestGetUserRole::test_string_vazia_e_guest PASSED                 [ 12%]
+test_ecommerce.py::TestCheckPermission::test_admin_passa_em_qualquer_role PASSED     [ 13%]
+test_ecommerce.py::TestCheckPermission::test_gerente_passa_em_role_gerente PASSED    [ 14%]
+test_ecommerce.py::TestCheckPermission::test_funcionario_bloqueado_de_role_gerente PASSED [ 15%]
+test_ecommerce.py::TestCheckPermission::test_guest_bloqueado_de_tudo PASSED          [ 16%]
+test_ecommerce.py::TestCheckPermission::test_multiplas_roles_permitidas PASSED       [ 17%]
+test_ecommerce.py::TestExecuteQuery::test_executa_insert_sem_fetch PASSED            [ 18%]
+test_ecommerce.py::TestExecuteQuery::test_executa_select_com_fetch PASSED            [ 19%]
+test_ecommerce.py::TestExecuteQuery::test_retorna_none_em_erro_sql PASSED            [ 20%]
+test_ecommerce.py::TestExecuteQuery::test_faz_rollback_em_erro PASSED                [ 20%]
+test_ecommerce.py::TestExecuteQuery::test_query_sem_params PASSED                    [ 21%]
+test_ecommerce.py::TestExecuteQuery::test_fetch_retorna_lista_vazia_se_nenhum_resultado PASSED [ 22%]
+test_ecommerce.py::TestCadastrarProduto::test_sem_permissao_nao_cadastra PASSED      [ 23%]
+test_ecommerce.py::TestCadastrarProduto::test_funcionario_cadastra_com_sucesso PASSED [ 24%]
+test_ecommerce.py::TestCadastrarProduto::test_valor_invalido_cancela_cadastro PASSED [ 25%]
+test_ecommerce.py::TestCadastrarProduto::test_falha_no_banco_exibe_erro PASSED       [ 26%]
+test_ecommerce.py::TestCadastrarProduto::test_produto_com_valores_limite PASSED      [ 27%]
+test_ecommerce.py::TestCadastrarCliente::test_funcionario_nao_pode_cadastrar_cliente PASSED [ 28%]
+test_ecommerce.py::TestCadastrarCliente::test_admin_cadastra_cliente_sucesso PASSED  [ 29%]
+test_ecommerce.py::TestCadastrarCliente::test_data_invalida_cancela_cadastro PASSED  [ 30%]
+test_ecommerce.py::TestCadastrarCliente::test_calcula_idade_corretamente PASSED      [ 31%]
+test_ecommerce.py::TestRealizarVenda::test_guest_bloqueado PASSED                    [ 32%]
+test_ecommerce.py::TestRealizarVenda::test_quantidade_invalida_cancela_venda PASSED  [ 33%]
+test_ecommerce.py::TestRealizarVenda::test_produto_inexistente_cancela_venda PASSED  [ 34%]
+test_ecommerce.py::TestRealizarVenda::test_estoque_insuficiente_bloqueia_venda PASSED [ 35%]
+test_ecommerce.py::TestRealizarVenda::test_venda_bem_sucedida PASSED                 [ 36%]
+test_ecommerce.py::TestRealizarVenda::test_venda_com_transportadora PASSED           [ 37%]
+test_ecommerce.py::TestConsultarVendas::test_guest_bloqueado PASSED                  [ 38%]
+test_ecommerce.py::TestConsultarVendas::test_nenhuma_venda_exibe_aviso PASSED        [ 39%]
+test_ecommerce.py::TestConsultarVendas::test_exibe_vendas_encontradas PASSED         [ 40%]
+test_ecommerce.py::TestConsultarVendas::test_nome_produto_longo_truncado PASSED      [ 40%]
+test_ecommerce.py::TestApagarRegistro::test_funcionario_nao_pode_apagar PASSED       [ 41%]
+test_ecommerce.py::TestApagarRegistro::test_opcao_invalida PASSED                    [ 42%]
+test_ecommerce.py::TestApagarRegistro::test_id_nao_numerico_cancela PASSED           [ 43%]
+test_ecommerce.py::TestApagarRegistro::test_registro_inexistente PASSED              [ 44%]
+test_ecommerce.py::TestApagarRegistro::test_cancelamento_por_usuario PASSED          [ 45%]
+test_ecommerce.py::TestApagarRegistro::test_apagar_cliente_sucesso PASSED            [ 46%]
+test_ecommerce.py::TestExecutarReajuste::test_gerente_nao_pode_reajustar PASSED      [ 47%]
+test_ecommerce.py::TestExecutarReajuste::test_percentual_invalido PASSED             [ 48%]
+test_ecommerce.py::TestExecutarReajuste::test_categoria_invalida PASSED              [ 49%]
+test_ecommerce.py::TestExecutarReajuste::test_reajuste_sucesso PASSED                [ 50%]
+test_ecommerce.py::TestExecutarReajuste::test_reajuste_zero_percentual PASSED        [ 51%]
+test_ecommerce.py::TestExecutarSorteio::test_gerente_nao_pode_sortear PASSED         [ 52%]
+test_ecommerce.py::TestExecutarSorteio::test_sorteio_exibe_resultado PASSED          [ 53%]
+test_ecommerce.py::TestExecutarSorteio::test_sorteio_sem_resultado_exibe_erro PASSED [ 54%]
+test_ecommerce.py::TestEdgeCases::test_usuario_com_admin_em_nome_nao_e_administrador PASSED [ 55%]
+test_ecommerce.py::TestEdgeCases::test_usuario_gerente_funcionario_prioridade PASSED [ 56%]
+test_ecommerce.py::TestEdgeCases::test_check_permission_lista_vazia PASSED           [ 57%]
+test_ecommerce.py::TestEdgeCases::test_check_permission_lista_vazia_admin_passa PASSED [ 58%]
+test_ecommerce.py::TestEdgeCases::test_venda_quantidade_zero PASSED                  [ 59%]
+test_ecommerce.py::TestEdgeCases::test_data_futura_invalida_no_strptime PASSED       [ 60%]
+test_ecommerce.py::TestEdgeCases::test_execute_query_conn_desconectada PASSED        [ 60%]
+test_integracao.py::TestFluxoLoginMenu::test_admin_acessa_menu_admin PASSED          [ 61%]
+test_integracao.py::TestFluxoLoginMenu::test_gerente_acessa_menu_gerente PASSED      [ 62%]
+test_integracao.py::TestFluxoLoginMenu::test_funcionario_acessa_menu_funcionario PASSED [ 63%]
+test_integracao.py::TestFluxoLoginMenu::test_credenciais_invalidas_nao_abre_menu PASSED [ 64%]
+test_integracao.py::TestFluxoLoginMenu::test_role_correto_injetado_na_sessao PASSED  [ 65%]
+test_integracao.py::TestFluxoVendaCompleto::test_fluxo_venda_chama_queries_na_ordem_correta PASSED [ 66%]
+test_integracao.py::TestFluxoVendaCompleto::test_valor_total_calculado_corretamente PASSED [ 67%]
+test_integracao.py::TestFluxoVendaCompleto::test_estoque_insuficiente_bloqueia_e_nao_insere PASSED [ 68%]
+test_integracao.py::TestFluxoVendaCompleto::test_produto_inexistente_aborta_fluxo PASSED [ 69%]
+test_integracao.py::TestFluxoVendaCompleto::test_venda_com_transportadora_registra_id_transporte PASSED [ 70%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_guest_nao_chega_ao_banco_em_cadastro PASSED [ 71%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_produto_e_banco_e_chamado PASSED [ 72%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_funcionario_cadastra_produto_permitido PASSED [ 73%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_gerente_nao_pode_cadastrar_cliente PASSED [ 74%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_cliente_dados_persistidos PASSED [ 75%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_produto_com_sucesso PASSED [ 76%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_retorna_lista_de_tabelas PASSED [ 77%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_produto_nao_quebra PASSED [ 78%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_editar_generico_update_executado PASSED [ 79%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_deletar_generico_remove_registro PASSED [ 80%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_menu_admin_fluxo_crud_nao_quebra PASSED [ 80%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_conn_inativa PASSED [ 81%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_escolha_invalida PASSED [ 82%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_escolha_nao_numerica PASSED [ 83%]
+test_integracao.py::TestFluxoClienteEspecial::test_consulta_vendas_exibe_cliente_corretamente PASSED [ 84%]
+test_integracao.py::TestFluxoClienteEspecial::test_multiplas_vendas_do_mesmo_cliente_exibidas PASSED [ 85%]
+test_integracao.py::TestFluxoClienteEspecial::test_venda_realizada_e_consulta_reflete_nova_entrada PASSED [ 86%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_funcionario_nao_pode_ver_estatisticas PASSED [ 87%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_gerente_pode_executar_estatisticas PASSED [ 88%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_estatisticas_exibe_todos_conjuntos_de_resultado PASSED [ 89%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_estatisticas_sem_dados_exibe_erro PASSED [ 90%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_admin_tambem_pode_executar_estatisticas PASSED [ 91%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_faz_rollback_em_erro_sql PASSED [ 92%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_retorna_none_em_erro PASSED [ 93%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_nao_trava_se_conn_desconectada_no_rollback PASSED [ 94%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_apagar_cliente_com_vendas_exibe_erro_fk PASSED [ 95%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_falha_no_insert_produto_exibe_erro PASSED [ 96%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_data_nascimento_invalida_cancela_cadastro_cliente PASSED [ 97%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_reajuste_categoria_invalida_nao_chama_banco PASSED [ 98%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_sorteio_sem_clientes_exibe_erro PASSED [ 99%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_sorteio_cliente_especial_recebe_voucher_maior PASSED [100%]
+
+=================================== 105 passed in 2.70s ====================================
+                                                                                        ▿689
+◄ 3s ◎ 
+
+
+
+
+
+
+
+
+                                                                                                                                                                                            ▿689
+◄ 0s ◎ pytest test_ecommerce.py test_integracao.py --cov=. --cov-report=term-missing                                                     □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.4 25% ↓ 20:44
+===================================================================================== test session starts ======================================================================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/art/Desktop/projeto_de_ivna/progueto_intregador
+plugins: cov-7.1.0
+collected 105 items                                                                                                                                                                            
+
+test_ecommerce.py ................................................................                                                                                                       [ 60%]
+test_integracao.py .........................................                                                                                                                             [100%]
+
+======================================================================================== tests coverage ========================================================================================
+_______________________________________________________________________ coverage: platform linux, python 3.14.4-final-0 ________________________________________________________________________
+
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+conexao.py              11      8    27%   4-16, 19
+ecommerce.py           716    315    56%   61-65, 76-77, 110-204, 208-261, 317, 365, 374-375, 380-381, 419-477, 482-518, 573-575, 598, 661-663, 692-693, 709-712, 719-742, 748-749, 755, 761, 767-768, 777-778, 807, 810, 817-819, 830-831, 844-845, 867-868, 877-878, 891-892, 900-901, 908-909, 915-924, 928-937, 941-951, 966-968, 987-1006, 1011-1034, 1038-1053, 1065-1066, 1091-1096
+test_ecommerce.py      392      2    99%   569-570
+test_integracao.py     378      2    99%   409-410
+--------------------------------------------------
+TOTAL                 1497    327    78%
+===================================================================================== 105 passed in 2.67s ======================================================================================
+                                                                                                                                                                                                                                                                                                                                                                    ▿689
+◄ 3s ◎                                                                                                                       □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.4 25% ↓ 20:45

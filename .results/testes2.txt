@@ -1,0 +1,290 @@
+◄ 2s ◎ pytest test_integracao.py -v                                                                                                 □ progueto_intregador △⎪●◦◌◦⎥ py ⌉⌊ 3.14.4 21:23
+=============================================================================== test session starts ================================================================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0 -- /home/art/Desktop/progueto_intregador/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/art/Desktop/progueto_intregador
+plugins: cov-7.1.0
+collected 41 items                                                                                                                                                                 
+
+test_integracao.py::TestFluxoLoginMenu::test_admin_acessa_menu_admin PASSED                                                                                                  [  2%]
+test_integracao.py::TestFluxoLoginMenu::test_gerente_acessa_menu_gerente PASSED                                                                                              [  4%]
+test_integracao.py::TestFluxoLoginMenu::test_funcionario_acessa_menu_funcionario PASSED                                                                                      [  7%]
+test_integracao.py::TestFluxoLoginMenu::test_credenciais_invalidas_nao_abre_menu PASSED                                                                                      [  9%]
+test_integracao.py::TestFluxoLoginMenu::test_role_correto_injetado_na_sessao PASSED                                                                                          [ 12%]
+test_integracao.py::TestFluxoVendaCompleto::test_fluxo_venda_chama_queries_na_ordem_correta PASSED                                                                           [ 14%]
+test_integracao.py::TestFluxoVendaCompleto::test_valor_total_calculado_corretamente PASSED                                                                                   [ 17%]
+test_integracao.py::TestFluxoVendaCompleto::test_estoque_insuficiente_bloqueia_e_nao_insere PASSED                                                                           [ 19%]
+test_integracao.py::TestFluxoVendaCompleto::test_produto_inexistente_aborta_fluxo PASSED                                                                                     [ 21%]
+test_integracao.py::TestFluxoVendaCompleto::test_venda_com_transportadora_registra_id_transporte PASSED                                                                      [ 24%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_guest_nao_chega_ao_banco_em_cadastro PASSED                                                                          [ 26%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_produto_e_banco_e_chamado PASSED                                                                      [ 29%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_funcionario_cadastra_produto_permitido PASSED                                                                        [ 31%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_gerente_nao_pode_cadastrar_cliente PASSED                                                                            [ 34%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_cliente_dados_persistidos PASSED                                                                      [ 36%]
+test_integracao.py::TestFluxoPermissaoCRUDProduto::test_admin_cadastra_produto_com_sucesso PASSED                                                                            [ 39%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_retorna_lista_de_tabelas FAILED                                                                       [ 41%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_produto_nao_quebra FAILED                                                                            [ 43%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_editar_generico_update_executado PASSED                                                                                 [ 46%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_deletar_generico_remove_registro PASSED                                                                                 [ 48%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_menu_admin_fluxo_crud_nao_quebra PASSED                                                                                 [ 51%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_conn_inativa PASSED                                                                                   [ 53%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_escolha_invalida PASSED                                                                               [ 56%]
+test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_escolha_nao_numerica PASSED                                                                          [ 58%]
+test_integracao.py::TestFluxoClienteEspecial::test_consulta_vendas_exibe_cliente_corretamente PASSED                                                                         [ 60%]
+test_integracao.py::TestFluxoClienteEspecial::test_multiplas_vendas_do_mesmo_cliente_exibidas PASSED                                                                         [ 63%]
+test_integracao.py::TestFluxoClienteEspecial::test_venda_realizada_e_consulta_reflete_nova_entrada PASSED                                                                    [ 65%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_funcionario_nao_pode_ver_estatisticas PASSED                                                                        [ 68%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_gerente_pode_executar_estatisticas PASSED                                                                           [ 70%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_estatisticas_exibe_todos_conjuntos_de_resultado PASSED                                                              [ 73%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_estatisticas_sem_dados_exibe_erro PASSED                                                                            [ 75%]
+test_integracao.py::TestFluxoEstatisticasCompletas::test_admin_tambem_pode_executar_estatisticas PASSED                                                                      [ 78%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_faz_rollback_em_erro_sql PASSED                                                                            [ 80%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_retorna_none_em_erro PASSED                                                                                [ 82%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_execute_query_nao_trava_se_conn_desconectada_no_rollback PASSED                                                          [ 85%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_apagar_cliente_com_vendas_exibe_erro_fk PASSED                                                                           [ 87%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_falha_no_insert_produto_exibe_erro PASSED                                                                                [ 90%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_data_nascimento_invalida_cancela_cadastro_cliente PASSED                                                                 [ 92%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_reajuste_categoria_invalida_nao_chama_banco PASSED                                                                       [ 95%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_sorteio_sem_clientes_exibe_erro PASSED                                                                                   [ 97%]
+test_integracao.py::TestFluxoFalhasIntegracao::test_sorteio_cliente_especial_recebe_voucher_maior PASSED                                                                     [100%]
+
+===================================================================================== FAILURES =====================================================================================
+____________________________________________________ TestFluxoCRUDGenericoAdmin.test_visualizar_tabela_retorna_lista_de_tabelas ____________________________________________________
+
+self = <test_integracao.TestFluxoCRUDGenericoAdmin object at 0x7f1256932710>, mock_conn = <MagicMock id='139716741680160'>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f1256dedba0>
+
+    def test_visualizar_tabela_retorna_lista_de_tabelas(self, mock_conn, monkeypatch):
+        """visualizar_tabela deve retornar lista iterável de tabelas."""
+        ecommerce.CURRENT_USER = 'admin'
+    
+        cursor = MagicMock()
+        cursor.fetchall.side_effect = [
+            [('cliente',), ('produto',), ('venda',)],  # SHOW TABLES
+            []  # SELECT * fallback
+        ]
+        cursor.description = [('id',), ('nome',)]
+        mock_conn.cursor.return_value = cursor
+    
+        monkeypatch.setattr('builtins.input', lambda _: '0')
+    
+        resultado = ecommerce.visualizar_tabela(mock_conn)
+    
+>       assert resultado is not None, "visualizar_tabela deveria retornar lista"
+E       AssertionError: visualizar_tabela deveria retornar lista
+E       assert None is not None
+
+test_integracao.py:306: AssertionError
+------------------------------------------------------------------------------- Captured stdout call -------------------------------------------------------------------------------
+
+--- Tabelas disponíveis ---
+1. cliente
+2. produto
+3. venda
+______________________________________________________ TestFluxoCRUDGenericoAdmin.test_cadastrar_generico_produto_nao_quebra _______________________________________________________
+
+self = <test_integracao.TestFluxoCRUDGenericoAdmin object at 0x7f1256932850>, mock_input = <MagicMock name='input' id='139716739143664'>
+mock_conn = <MagicMock id='139716739141312'>
+
+    @patch('builtins.input', side_effect=['1', 'Produto Teste', 'Descricao Teste', '10', '99.99', '', '1'])
+    def test_cadastrar_generico_produto_nao_quebra(self, mock_input, mock_conn):
+        """
+        cadastrar_generico deve funcionar ao inserir produto.
+        Detecta bug clássico de visualizar_tabela retornando None.
+        """
+        ecommerce.CURRENT_USER = 'admin'
+    
+        cursor = MagicMock()
+    
+        # SHOW TABLES
+        # DESCRIBE produto
+        cursor.fetchall.side_effect = [
+            [('produto',)],
+            [
+                ('id', 'int', None, None, None, 'auto_increment'),
+                ('nome', 'varchar', None, None, None, ''),
+                ('descricao', 'varchar', None, None, None, ''),
+                ('quantidade_estoque', 'int', None, None, None, ''),
+                ('valor', 'decimal', None, None, None, ''),
+                ('observacoes', 'varchar', None, None, None, ''),
+                ('id_vendedor', 'int', None, None, None, ''),
+            ]
+        ]
+    
+        mock_conn.cursor.return_value = cursor
+    
+        with patch.object(ecommerce, 'visualizar_tabela', return_value=['produto']):
+>           ecommerce.cadastrar_generico(mock_conn)
+
+test_integracao.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <MagicMock id='139716739141312'>
+
+    def cadastrar_generico(conn):
+        """Permite inserir dados em qualquer tabela do banco."""
+        tabelas = visualizar_tabela(conn)
+        print("\nTabelas disponíveis:")
+        for i, t in enumerate(tabelas, 1):
+            print(f"{i}. {t}")
+        escolha = input("Escolha a tabela: ").strip()
+    
+        if not escolha.isdigit() or int(escolha) < 1 or int(escolha) > len(tabelas):
+            print("[ERRO] Escolha inválida.")
+            return
+        tabela = tabelas[int(escolha) - 1]
+    
+        cursor = conn.cursor()
+        cursor.execute(f"DESCRIBE {tabela}")
+        colunas = cursor.fetchall()
+    
+        valores = []
+        for col in colunas:
+            nome = col[0]
+>           tipo = col[1]
+                   ^^^^^^
+E           IndexError: tuple index out of range
+
+ecommerce.py:800: IndexError
+------------------------------------------------------------------------------- Captured stdout call -------------------------------------------------------------------------------
+
+Tabelas disponíveis:
+1. produto
+============================================================================= short test summary info ==============================================================================
+FAILED test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_retorna_lista_de_tabelas - AssertionError: visualizar_tabela deveria retornar lista
+FAILED test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_produto_nao_quebra - IndexError: tuple index out of range
+=========================================================================== 2 failed, 39 passed in 2.26s ===========================================================================
+                                                                                                                                                                              ▴86▿86
+◄ 2s ○ 
+
+
+
+
+
+
+                                                                                                                                                                             ▴86▿180
+◄ 0s ◎ pytest --cov=ecommerce test_integracao.py                                                                                   □ progueto_intregador △⎪●◦◌◦✕⎥ py ⌉⌊ 3.14.4 21:32
+=============================================================================== test session starts ================================================================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0
+rootdir: /home/art/Desktop/progueto_intregador
+plugins: cov-7.1.0
+collected 41 items                                                                                                                                                                 
+
+test_integracao.py ................FF.......................                                                                                                                 [100%]
+
+===================================================================================== FAILURES =====================================================================================
+____________________________________________________ TestFluxoCRUDGenericoAdmin.test_visualizar_tabela_retorna_lista_de_tabelas ____________________________________________________
+
+self = <test_integracao.TestFluxoCRUDGenericoAdmin object at 0x7f6513770550>, mock_conn = <MagicMock id='140072093723552'>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f65137948a0>
+
+    def test_visualizar_tabela_retorna_lista_de_tabelas(self, mock_conn, monkeypatch):
+        """visualizar_tabela deve retornar lista iterável de tabelas."""
+        ecommerce.CURRENT_USER = 'admin'
+    
+        cursor = MagicMock()
+        cursor.fetchall.side_effect = [
+            [('cliente',), ('produto',), ('venda',)],  # SHOW TABLES
+            []  # SELECT * fallback
+        ]
+        cursor.description = [('id',), ('nome',)]
+        mock_conn.cursor.return_value = cursor
+    
+        monkeypatch.setattr('builtins.input', lambda _: '0')
+    
+        resultado = ecommerce.visualizar_tabela(mock_conn)
+    
+>       assert resultado is not None, "visualizar_tabela deveria retornar lista"
+E       AssertionError: visualizar_tabela deveria retornar lista
+E       assert None is not None
+
+test_integracao.py:306: AssertionError
+------------------------------------------------------------------------------- Captured stdout call -------------------------------------------------------------------------------
+
+--- Tabelas disponíveis ---
+1. cliente
+2. produto
+3. venda
+______________________________________________________ TestFluxoCRUDGenericoAdmin.test_cadastrar_generico_produto_nao_quebra _______________________________________________________
+
+self = <test_integracao.TestFluxoCRUDGenericoAdmin object at 0x7f6513770690>, mock_input = <MagicMock name='input' id='140072093727584'>
+mock_conn = <MagicMock id='140072093720864'>
+
+    @patch('builtins.input', side_effect=['1', 'Produto Teste', 'Descricao Teste', '10', '99.99', '', '1'])
+    def test_cadastrar_generico_produto_nao_quebra(self, mock_input, mock_conn):
+        """
+        cadastrar_generico deve funcionar ao inserir produto.
+        Detecta bug clássico de visualizar_tabela retornando None.
+        """
+        ecommerce.CURRENT_USER = 'admin'
+    
+        cursor = MagicMock()
+    
+        # SHOW TABLES
+        # DESCRIBE produto
+        cursor.fetchall.side_effect = [
+            [('produto',)],
+            [
+                ('id', 'int', None, None, None, 'auto_increment'),
+                ('nome', 'varchar', None, None, None, ''),
+                ('descricao', 'varchar', None, None, None, ''),
+                ('quantidade_estoque', 'int', None, None, None, ''),
+                ('valor', 'decimal', None, None, None, ''),
+                ('observacoes', 'varchar', None, None, None, ''),
+                ('id_vendedor', 'int', None, None, None, ''),
+            ]
+        ]
+    
+        mock_conn.cursor.return_value = cursor
+    
+        with patch.object(ecommerce, 'visualizar_tabela', return_value=['produto']):
+>           ecommerce.cadastrar_generico(mock_conn)
+
+test_integracao.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <MagicMock id='140072093720864'>
+
+    def cadastrar_generico(conn):
+        """Permite inserir dados em qualquer tabela do banco."""
+        tabelas = visualizar_tabela(conn)
+        print("\nTabelas disponíveis:")
+        for i, t in enumerate(tabelas, 1):
+            print(f"{i}. {t}")
+        escolha = input("Escolha a tabela: ").strip()
+    
+        if not escolha.isdigit() or int(escolha) < 1 or int(escolha) > len(tabelas):
+            print("[ERRO] Escolha inválida.")
+            return
+        tabela = tabelas[int(escolha) - 1]
+    
+        cursor = conn.cursor()
+        cursor.execute(f"DESCRIBE {tabela}")
+        colunas = cursor.fetchall()
+    
+        valores = []
+        for col in colunas:
+            nome = col[0]
+>           tipo = col[1]
+                   ^^^^^^
+E           IndexError: tuple index out of range
+
+ecommerce.py:800: IndexError
+------------------------------------------------------------------------------- Captured stdout call -------------------------------------------------------------------------------
+
+Tabelas disponíveis:
+1. produto
+================================================================================== tests coverage ==================================================================================
+_________________________________________________________________ coverage: platform linux, python 3.14.4-final-0 __________________________________________________________________
+
+Name           Stmts   Miss  Cover
+----------------------------------
+ecommerce.py     707    373    47%
+----------------------------------
+TOTAL            707    373    47%
+============================================================================= short test summary info ==============================================================================
+FAILED test_integracao.py::TestFluxoCRUDGenericoAdmin::test_visualizar_tabela_retorna_lista_de_tabelas - AssertionError: visualizar_tabela deveria retornar lista
+FAILED test_integracao.py::TestFluxoCRUDGenericoAdmin::test_cadastrar_generico_produto_nao_quebra - IndexError: tuple index out of range
+=========================================================================== 2 failed, 39 passed in 2.37s ===========================================================================
+                                                                                                                                                                             ▴86▿180
+◄ 2s ○ 

@@ -783,11 +783,13 @@ def cadastrar_generico(conn):
     print("\nTabelas disponíveis:")
     for i, t in enumerate(tabelas, 1):
         print(f"{i}. {t}")
+
     escolha = input("Escolha a tabela: ").strip()
 
     if not escolha.isdigit() or int(escolha) < 1 or int(escolha) > len(tabelas):
         print("[ERRO] Escolha inválida.")
         return
+
     tabela = tabelas[int(escolha) - 1]
 
     cursor = conn.cursor()
@@ -795,16 +797,30 @@ def cadastrar_generico(conn):
     colunas = cursor.fetchall()
 
     valores = []
+    colunas_validas = []
+
     for col in colunas:
         nome = col[0]
-        tipo = col[1]
-        if "auto_increment" in col[5] or nome.lower() == "id":
+        tipo = col[1] if len(col) > 1 else ''
+
+        if nome.lower() == "id":
             continue
+
+        if len(col) > 5 and "auto_increment" in str(col[5]):
+            continue
+
         valor = input(f"Digite o valor para {nome} ({tipo}): ")
         valores.append(valor)
+        colunas_validas.append(nome)
+
+    if not colunas_validas:
+        print("[ERRO] Nenhuma coluna válida para inserção.")
+        cursor.close()
+        return
 
     placeholders = ', '.join(['%s'] * len(valores))
-    colunas_sql = ', '.join([c[0] for c in colunas if not ("auto_increment" in c[5] or c[0].lower() == "id")])
+    colunas_sql = ', '.join(colunas_validas)
+
     sql = f"INSERT INTO {tabela} ({colunas_sql}) VALUES ({placeholders})"
 
     try:
@@ -939,37 +955,37 @@ def visualizar_tabela(conn):
     """Permite ao ADMIN visualizar qualquer tabela do banco."""
     if not conn or not conn.is_connected():
         print("[ERRO] Conexão com o banco está inativa.")
-        return
+        return None
 
     cursor = conn.cursor()
 
-    # Obter todas as tabelas do banco de dados atual
     cursor.execute("SHOW TABLES;")
     tabelas = [t[0] for t in cursor.fetchall()]
 
     if not tabelas:
         print("[AVISO] Nenhuma tabela encontrada no banco de dados.")
         cursor.close()
-        return
+        return []
 
     print("\n--- Tabelas disponíveis ---")
     for i, tabela in enumerate(tabelas, start=1):
         print(f"{i}. {tabela}")
 
     escolha = input("\nDigite o número da tabela que deseja visualizar (ou 0 para voltar): ").strip()
+
     if escolha == '0':
         cursor.close()
-        return
+        return tabelas
 
     try:
         idx = int(escolha) - 1
         if idx < 0 or idx >= len(tabelas):
             print("[ERRO] Escolha inválida.")
             cursor.close()
-            return
+            return tabelas  # 👈 importante manter lista
+
         tabela_selecionada = tabelas[idx]
 
-        # Buscar dados da tabela
         cursor.execute(f"SELECT * FROM {tabela_selecionada};")
         registros = cursor.fetchall()
         colunas = [desc[0] for desc in cursor.description]
@@ -978,15 +994,16 @@ def visualizar_tabela(conn):
         if not registros:
             print("[VAZIO] Nenhum registro encontrado.")
         else:
-            # Exibir cabeçalho
             print(" | ".join(colunas))
             print("-" * 80)
             for linha in registros:
                 print(" | ".join(str(c) for c in linha))
+
     except Exception as e:
         print(f"[ERRO] Não foi possível exibir a tabela: {e}")
 
     cursor.close()
+    return tabelas
 
 
 def menu_gerente(conn):

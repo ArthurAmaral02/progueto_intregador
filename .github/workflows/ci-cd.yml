@@ -46,7 +46,7 @@ jobs:
         run: mkdir -p reports
       - name: Executar testes unitários
         run: |
-          PYTHONPATH=. pytest tests/test_unit.py \
+          PYTHONPATH=$PWD pytest -v tests/test_unit.py \
             --tb=short \
             --junitxml=reports/unit-results.xml \
             --cov=ecommerce \

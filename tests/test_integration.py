@@ -114,7 +114,7 @@ class TestFluxoVendaCompleto:
     """
 
     @patch('builtins.input', side_effect=['1', 'Rua das Flores, 10', '', '1', '3'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_fluxo_venda_chama_queries_na_ordem_correta(self, mock_exec, mock_input, mock_conn):
         """Garante que as 3 operações SQL são chamadas na ordem certa."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -128,7 +128,7 @@ class TestFluxoVendaCompleto:
         assert mock_exec.call_count >= 3
 
     @patch('builtins.input', side_effect=['2', 'Av. Brasil, 50', '', '5', '10'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_valor_total_calculado_corretamente(self, mock_exec, mock_input, mock_conn, capsys):
         """Total da venda deve ser preço_unitário × quantidade."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -143,7 +143,7 @@ class TestFluxoVendaCompleto:
         assert f'R$ {preco * qtd:.2f}' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '', '1', '5'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_estoque_insuficiente_bloqueia_e_nao_insere(self, mock_exec, mock_input, mock_conn, capsys):
         """Se estoque < qtd solicitada, nenhum INSERT deve ocorrer."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -157,7 +157,7 @@ class TestFluxoVendaCompleto:
         assert 'insuficiente' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '', '999', '2'])
-    @patch('ecommerce.execute_query', return_value=[])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[])
     def test_produto_inexistente_aborta_fluxo(self, mock_exec, mock_input, mock_conn, capsys):
         """Produto não encontrado → fluxo abortado com mensagem de erro."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -166,7 +166,7 @@ class TestFluxoVendaCompleto:
         assert 'não encontrado' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '2', '1', '1'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_venda_com_transportadora_registra_id_transporte(self, mock_exec, mock_input, mock_conn, capsys):
         """Quando transportadora informada, INSERT venda deve conter id_transporte=2."""
         ecommerce.CURRENT_USER = 'admin'
@@ -202,7 +202,7 @@ class TestFluxoPermissaoCRUDProduto:
         assert 'ACESSO NEGADO' in captured.out
 
     @patch('builtins.input', side_effect=['Teclado', 'Mecânico', '15', '350.00', '2', ''])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_admin_cadastra_produto_e_banco_e_chamado(self, mock_exec, mock_input, mock_conn, capsys):
         """Admin deve conseguir cadastrar e o execute_query deve ser chamado."""
         ecommerce.CURRENT_USER = 'admin'
@@ -212,7 +212,7 @@ class TestFluxoPermissaoCRUDProduto:
         assert 'SUCESSO' in captured.out
 
     @patch('builtins.input', side_effect=['Monitor', 'Full HD', '5', '1200.00', '1', ''])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_funcionario_cadastra_produto_permitido(self, mock_exec, mock_input, mock_conn, capsys):
         """Funcionário tem permissão para cadastrar produto."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -230,7 +230,7 @@ class TestFluxoPermissaoCRUDProduto:
         assert 'ACESSO NEGADO' in captured.out
 
     @patch('builtins.input', side_effect=['Ana Lima', '1985-07-20', 'f'])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_admin_cadastra_cliente_dados_persistidos(self, mock_exec, mock_input, mock_conn):
         """Admin cadastra cliente e os dados são repassados corretamente ao banco."""
         ecommerce.CURRENT_USER = 'admin'
@@ -241,7 +241,7 @@ class TestFluxoPermissaoCRUDProduto:
         assert params[2] == 'f'
     
     @patch('builtins.input', side_effect=['Notebook Gamer', 'RTX 4060 / 16GB RAM', '8', '7500.00', '1', 'Produto premium'])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_admin_cadastra_produto_com_sucesso(self, mock_exec, mock_input, mock_conn, capsys):
         """
         Admin deve conseguir cadastrar produto com sucesso,
@@ -454,7 +454,7 @@ class TestFluxoClienteEspecial:
     Integra: realizar_venda (várias) → consultar_vendas → status de cliente.
     """
 
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_consulta_vendas_exibe_cliente_corretamente(self, mock_exec, mock_conn, capsys):
         """Consultar vendas deve mostrar nome do cliente e produto."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -472,7 +472,7 @@ class TestFluxoClienteEspecial:
         assert 'Carlos Lima' in captured.out
         assert 'Produto 3' in captured.out
 
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_multiplas_vendas_do_mesmo_cliente_exibidas(self, mock_exec, mock_conn, capsys):
         """Múltiplas vendas do mesmo cliente devem ser listadas."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -485,7 +485,7 @@ class TestFluxoClienteEspecial:
         assert captured.out.count('João') == 2
 
     @patch('builtins.input', side_effect=['5', 'Rua X', '', '3', '2'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_venda_realizada_e_consulta_reflete_nova_entrada(self, mock_exec, mock_input, mock_conn, capsys):
         """Após venda realizada, consulta de vendas deve incluir o novo registro."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -644,7 +644,7 @@ class TestFluxoFalhasIntegracao:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['Produto Falha', 'Desc', '5', '99.00', '1', ''])
-    @patch('ecommerce.execute_query', return_value=None)
+    @patch('ecommerce.ecommerce.execute_query', return_value=None)
     def test_falha_no_insert_produto_exibe_erro(self, mock_exec, mock_input, mock_conn, capsys):
         """Se INSERT falhar (retorna None), mensagem de ERRO deve aparecer."""
         ecommerce.CURRENT_USER = 'admin'
@@ -670,7 +670,7 @@ class TestFluxoFalhasIntegracao:
         captured = capsys.readouterr()
         assert 'ERRO' in captured.out
 
-    @patch('ecommerce.execute_query', return_value=[])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[])
     def test_sorteio_sem_clientes_exibe_erro(self, mock_exec, mock_conn, capsys):
         """Sorteio com resultado vazio deve informar falha."""
         ecommerce.CURRENT_USER = 'admin'
@@ -678,7 +678,7 @@ class TestFluxoFalhasIntegracao:
         captured = capsys.readouterr()
         assert 'ERRO' in captured.out
 
-    @patch('ecommerce.execute_query', return_value=[{'cliente_sorteado': 7, 'valor_voucher': 200.0}])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[{'cliente_sorteado': 7, 'valor_voucher': 200.0}])
     def test_sorteio_cliente_especial_recebe_voucher_maior(self, mock_exec, mock_conn, capsys):
         """Cliente especial sorteado deve receber voucher de R$200."""
         ecommerce.CURRENT_USER = 'admin'

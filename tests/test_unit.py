@@ -8,8 +8,7 @@ from unittest.mock import MagicMock, patch, call
 from datetime import date
 import mysql.connector
 
-import ecommerce
-
+from ecommerce import ecommerce
 
 # ──────────────────────────────────────────────
 # Fixtures
@@ -206,7 +205,7 @@ class TestCadastrarProduto:
         mock_conn.cursor.assert_not_called()
 
     @patch('builtins.input', side_effect=['Notebook', 'Desc', '10', '2500.00', '1', ''])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_funcionario_cadastra_com_sucesso(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         ecommerce.cadastrar_produto(mock_conn)
@@ -222,7 +221,7 @@ class TestCadastrarProduto:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['Prod', 'Desc', '5', '100.0', '1', ''])
-    @patch('ecommerce.execute_query', return_value=None)
+    @patch('ecommerce.ecommerce.execute_query', return_value=None)
     def test_falha_no_banco_exibe_erro(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.cadastrar_produto(mock_conn)
@@ -230,7 +229,7 @@ class TestCadastrarProduto:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['X', 'D', '0', '0.01', '1', ''])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_produto_com_valores_limite(self, mock_exec, mock_input, mock_conn, capsys):
         """Estoque=0 e valor mínimo devem ser aceitos."""
         ecommerce.CURRENT_USER = 'admin'
@@ -252,7 +251,7 @@ class TestCadastrarCliente:
         assert 'ACESSO NEGADO' in captured.out
 
     @patch('builtins.input', side_effect=['João Silva', '1990-05-15', 'm'])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_admin_cadastra_cliente_sucesso(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.cadastrar_cliente(mock_conn)
@@ -267,7 +266,7 @@ class TestCadastrarCliente:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['Novo', '2006-02-28', 'o'])
-    @patch('ecommerce.execute_query', return_value=True)
+    @patch('ecommerce.ecommerce.execute_query', return_value=True)
     def test_calcula_idade_corretamente(self, mock_exec, mock_input, mock_conn):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.cadastrar_cliente(mock_conn)
@@ -298,7 +297,7 @@ class TestRealizarVenda:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '', '99', '1'])
-    @patch('ecommerce.execute_query', return_value=[])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[])
     def test_produto_inexistente_cancela_venda(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         ecommerce.realizar_venda(mock_conn)
@@ -306,7 +305,7 @@ class TestRealizarVenda:
         assert 'não encontrado' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '', '1', '100'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_estoque_insuficiente_bloqueia_venda(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         # Primeiro call: produto_info; demais: venda e items
@@ -319,7 +318,7 @@ class TestRealizarVenda:
         assert 'insuficiente' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A, 10', '', '1', '2'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_venda_bem_sucedida(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         mock_exec.side_effect = [
@@ -333,7 +332,7 @@ class TestRealizarVenda:
         assert 'SUCESSO' in captured.out
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '3', '1', '1'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_venda_com_transportadora(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         mock_exec.side_effect = [
@@ -357,14 +356,14 @@ class TestConsultarVendas:
         captured = capsys.readouterr()
         assert 'ACESSO NEGADO' in captured.out
 
-    @patch('ecommerce.execute_query', return_value=[])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[])
     def test_nenhuma_venda_exibe_aviso(self, mock_exec, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         ecommerce.consultar_vendas(mock_conn)
         captured = capsys.readouterr()
         assert 'Nenhuma venda' in captured.out
 
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_exibe_vendas_encontradas(self, mock_exec, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         mock_exec.return_value = [
@@ -375,7 +374,7 @@ class TestConsultarVendas:
         captured = capsys.readouterr()
         assert 'Cliente 1' in captured.out
 
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_nome_produto_longo_truncado(self, mock_exec, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'funcionario1'
         nome_longo = 'Produto XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (1x)'
@@ -470,7 +469,7 @@ class TestExecutarReajuste:
         assert 'ERRO' in captured.out
 
     @patch('builtins.input', side_effect=['5.5', 'vendedor'])
-    @patch('ecommerce.execute_query', return_value=[{'resultado': 'Reajuste aplicado com sucesso.'}])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[{'resultado': 'Reajuste aplicado com sucesso.'}])
     def test_reajuste_sucesso(self, mock_exec, mock_input, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.executar_reajuste(mock_conn)
@@ -478,7 +477,7 @@ class TestExecutarReajuste:
         assert 'SUCESSO' in captured.out
 
     @patch('builtins.input', side_effect=['0.0', 'gerente'])
-    @patch('ecommerce.execute_query', return_value=[{'resultado': 'Nenhuma alteração.'}])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[{'resultado': 'Nenhuma alteração.'}])
     def test_reajuste_zero_percentual(self, mock_exec, mock_input, mock_conn, capsys):
         """Percentual 0 é válido numericamente e deve ser aceito."""
         ecommerce.CURRENT_USER = 'admin'
@@ -499,7 +498,7 @@ class TestExecutarSorteio:
         captured = capsys.readouterr()
         assert 'ACESSO NEGADO' in captured.out
 
-    @patch('ecommerce.execute_query', return_value=[{'cliente_sorteado': 42, 'valor_voucher': 150.0}])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[{'cliente_sorteado': 42, 'valor_voucher': 150.0}])
     def test_sorteio_exibe_resultado(self, mock_exec, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.executar_sorteio(mock_conn)
@@ -507,7 +506,7 @@ class TestExecutarSorteio:
         assert '42' in captured.out
         assert '150.00' in captured.out
 
-    @patch('ecommerce.execute_query', return_value=[])
+    @patch('ecommerce.ecommerce.execute_query', return_value=[])
     def test_sorteio_sem_resultado_exibe_erro(self, mock_exec, mock_conn, capsys):
         ecommerce.CURRENT_USER = 'admin'
         ecommerce.executar_sorteio(mock_conn)
@@ -545,7 +544,7 @@ class TestEdgeCases:
         assert ecommerce.check_permission([]) is True
 
     @patch('builtins.input', side_effect=['1', 'Rua A', '', '1', '0'])
-    @patch('ecommerce.execute_query')
+    @patch('ecommerce.ecommerce.execute_query')
     def test_venda_quantidade_zero(self, mock_exec, mock_input, mock_conn, capsys):
         """Quantidade 0: estoque(10) >= 0 → venda prossegue com total R$0.00."""
         ecommerce.CURRENT_USER = 'funcionario1'
@@ -564,7 +563,7 @@ class TestEdgeCases:
         ecommerce.CURRENT_USER = 'admin'
         # Não deve lançar exceção; o sistema aceita a data
         try:
-            with patch('ecommerce.execute_query', return_value=True):
+            with patch('ecommerce.ecommerce.execute_query', return_value=True):
                 ecommerce.cadastrar_cliente(mock_conn)
         except Exception:
             pass  # Comportamento aceitável

@@ -16,8 +16,7 @@ from unittest.mock import MagicMock, patch, call
 from datetime import date
 import mysql.connector
 
-import ecommerce
-
+from ecommerce import ecommerce
 
 # ──────────────────────────────────────────────
 # Fixtures compartilhadas

@@ -1,0 +1,4 @@
+mysql-connector-python
+pytest
+tabulate
+pytest-cov

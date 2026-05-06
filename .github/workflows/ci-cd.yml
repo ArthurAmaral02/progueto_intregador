@@ -83,7 +83,7 @@ jobs:
         run: mkdir -p reports
       - name: Executar testes de integração
         run: |
-          pytest tests/test_integration.py \
+          PYTHONPATH=$PWD pytest -v tests/test_integration.py \
             --tb=short \
             --junitxml=reports/integration-results.xml \
             --cov=ecommerce \

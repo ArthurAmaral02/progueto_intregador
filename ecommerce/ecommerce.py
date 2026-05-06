@@ -1,6 +1,6 @@
 import mysql.connector
 from datetime import date, datetime
-from conexao import conectar
+from .conexao import conectar
 import random
 import os
 import time

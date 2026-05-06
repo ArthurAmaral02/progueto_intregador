@@ -54,8 +54,8 @@ class TestFluxoLoginMenu:
     Integra: login() → get_db_connection() → get_user_role() → menu_principal()
     """
 
-    @patch('ecommerce.menu_admin')
-    @patch('ecommerce.get_db_connection')
+    @patch('ecommerce.ecommerce.menu_admin')
+    @patch('ecommerce.ecommerce.get_db_connection')
     @patch('builtins.input', side_effect=['admin', 'Senhateste1!!'])
     def test_admin_acessa_menu_admin(self, mock_input, mock_conn_fn, mock_menu, capsys):
         """Admin logado deve ser encaminhado para menu_admin."""
@@ -65,8 +65,8 @@ class TestFluxoLoginMenu:
         captured = capsys.readouterr()
         assert 'Administrador' in captured.out
 
-    @patch('ecommerce.menu_gerente')
-    @patch('ecommerce.get_db_connection')
+    @patch('ecommerce.ecommerce.menu_gerente')
+    @patch('ecommerce.ecommerce.get_db_connection')
     @patch('builtins.input', side_effect=['gerente', 'Senhateste1!'])
     def test_gerente_acessa_menu_gerente(self, mock_input, mock_conn_fn, mock_menu, capsys):
         """Gerente logado deve ser encaminhado para menu_gerente."""
@@ -76,8 +76,8 @@ class TestFluxoLoginMenu:
         captured = capsys.readouterr()
         assert 'Gerente' in captured.out
 
-    @patch('ecommerce.menu_funcionario')
-    @patch('ecommerce.get_db_connection')
+    @patch('ecommerce.ecommerce.menu_funcionario')
+    @patch('ecommerce.ecommerce.get_db_connection')
     @patch('builtins.input', side_effect=['funcionario', 'Senhateste1!'])
     def test_funcionario_acessa_menu_funcionario(self, mock_input, mock_conn_fn, mock_menu, capsys):
         """Funcionário logado deve ser encaminhado para menu_funcionario."""
@@ -85,7 +85,7 @@ class TestFluxoLoginMenu:
         ecommerce.login()
         mock_menu.assert_called_once()
 
-    @patch('ecommerce.get_db_connection', return_value=None)
+    @patch('ecommerce.ecommerce.get_db_connection', return_value=None)
     @patch('builtins.input', side_effect=['usuario_errado', 'senha_errada'])
     def test_credenciais_invalidas_nao_abre_menu(self, mock_input, mock_conn_fn, capsys):
         """Credenciais inválidas → sem menu, exibe erro."""
@@ -93,12 +93,12 @@ class TestFluxoLoginMenu:
         captured = capsys.readouterr()
         assert 'ERRO' in captured.out
 
-    @patch('ecommerce.get_db_connection')
+    @patch('ecommerce.ecommerce.get_db_connection')
     @patch('builtins.input', side_effect=['admin', 'Senhateste1!!'])
     def test_role_correto_injetado_na_sessao(self, mock_input, mock_conn_fn):
         """Após login com 'admin', CURRENT_USER deve estar definido."""
         mock_conn_fn.return_value = MagicMock()
-        with patch('ecommerce.menu_principal'):
+        with patch('ecommerce.ecommerce.menu_principal'):
             ecommerce.login()
         assert ecommerce.CURRENT_USER == 'admin'
 
